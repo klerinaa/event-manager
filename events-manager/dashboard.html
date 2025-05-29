@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome, <span id="user-name-display"></span>!</h1>
+            <button id="logout-btn">Logout</button>
+        </header>
+
+        <section id="profile-section">
+            <h2>Profile</h2>
+            <form id="profile-form">
+                <label>Email:
+                    <input type="email" id="profile-email" />
+                </label>
+                <label>Bio:
+                    <textarea id="profile-bio" rows="3"></textarea>
+                </label>
+                <button type="submit">Save Profile</button>
+                <p id="profile-message" class="message"></p>
+            </form>
+        </section>
+
+        <section id="events-section">
+            <h2>Events</h2>
+            
+             <div class="controls">
+                <button id="export-btn">Export Events</button>
+                <button id="import-btn">Import Events</button>
+                <input type="file" id="import-input" style="display:none;" accept=".json" />
+            </div>
+            <div class="controls">
+                <button id="add-event-btn">Add Event</button>
+                <select id="filter-type">
+                    <option value="all">All Types</option>
+                    <option value="work">Work</option>
+                    <option value="personal">Personal</option>
+                    <option value="other">Other</option>
+                </select>
+                <select id="sort-events">
+                    <option value="date-asc">Date Ascending</option>
+                    <option value="date-desc">Date Descending</option>
+                    <option value="title-asc">Title Ascending</option>
+                    <option value="title-desc">Title Descending</option>
+                </select>
+                <input type="search" id="search-events" placeholder="Search events..." />
+            </div>
+
+            <div id="events-list"></div>
+
+            <!-- Modal for Add/Edit event -->
+            <div id="event-modal" class="modal hidden">
+                <div class="modal-content">
+                    <h3 id="modal-title">Add Event</h3>
+                    <form id="event-form">
+                        <input type="hidden" id="event-id" />
+                        <label>Title:
+                            <input type="text" id="event-title" required />
+                        </label>
+                        <label>Description:
+                            <textarea id="event-description" rows="3"></textarea>
+                        </label>
+                        <label>Date:
+                            <input type="date" id="event-date" required />
+                        </label>
+                        <label>Type:
+                            <select id="event-type" required>
+                                <option value="">Select type</option>
+                                <option value="work">Work</option>
+                                <option value="personal">Personal</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </label>
+                       
+
+                        <label>Recurring:
+                            <select id="event-recurring">
+                                <option value="none">None</option>
+                                <option value="daily">Daily</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly">Monthly</option>
+                            </select>
+                        </label>
+                        <button type="submit" >Save Event</button>
+                        <button type="button" id="cancel-event-btn">Cancel</button>
+                        <p id="event-message" class="message"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>
